@@ -1,0 +1,48 @@
+package com.reactive.streams.reactivebackend.domain;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.Objects;
+
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+public class Quote {
+
+    private String id;
+    private String book;
+    private String content;
+
+    @Override
+    public String toString() {
+        return "Quote{" +
+                "id='" + id + '\'' +
+                ", book='" + book + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Quote quote = (Quote) o;
+
+        if (!Objects.equals(id, quote.id)) return false;
+        if (!Objects.equals(book, quote.book)) return false;
+        return Objects.equals(content, quote.content);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (book != null ? book.hashCode() : 0);
+        result = 31 * result + (content != null ? content.hashCode() : 0);
+        return result;
+    }
+}
